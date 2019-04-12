@@ -14,8 +14,12 @@ public class Mountain {
 
     public String info(){
         String tmp;
-        tmp = location + " " + height;
+        tmp = "Location: " + location + "\nHeight: " + height;
 
         return tmp;
+    }
+
+    public String namn(){
+        return name;
     }
 }
