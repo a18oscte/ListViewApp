@@ -2,21 +2,53 @@ package org.brohede.marcus.listviewapp;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    private String[] mountainNames = {"Matterhorn","Mont Blanc","Denali"};
-    private String[] mountainLocations = {"Alps","Alps","Alaska"};
-    private int[] mountainHeights ={4478,4808,6190};
+    private String[] mountainNames = {"Matterhorn", "Mont Blanc", "Denali"};
+    private String[] mountainLocations = {"Alps", "Alps", "Alaska"};
+    private int[] mountainHeights = {4478, 4808, 6190};
     // Create ArrayLists from the raw data above and use these lists when populating your ListView.
+
+    public class mountain {
+
+        private String name;
+        private String location;
+        private int height;
+
+        public mountain(String n, String l, int h){
+            name = n;
+            location = l;
+            height = h;
+        }
+
+        public String info(){
+            String tmp;
+            tmp = location + " " + height;
+
+            return tmp;
+        }
+    }
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        ArrayList<mountain> mountainArr = new ArrayList();
+        mountainArr.add(new mountain("Matterhorn", "Alps", 4478));
+
+
+        ArrayAdapter adapter = new ArrayAdapter(getApplicationContext(),R.layout.list_item_textview, R.id.my_listview, mountainArr);
+
+        ListView myListView = (ListView)findViewById(R.id.my_listview);
+        myListView.setAdapter(adapter);
 
         // The onCreate method is run when the app is created.
         // Before you can implement this you need to create the layout xml files that
@@ -42,3 +74,4 @@ public class MainActivity extends AppCompatActivity {
         //    accordingly
     }
 }
+
