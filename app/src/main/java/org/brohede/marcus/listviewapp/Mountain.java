@@ -1,12 +1,12 @@
-import java.util.ArrayList;
+package org.brohede.marcus.listviewapp;
 
-public class mountain {
+public class Mountain {
 
     private String name;
     private String location;
     private int height;
 
-    public mountain(String n, String l, int h){
+    public Mountain(String n, String l, int h){
         name = n;
         location = l;
         height = h;

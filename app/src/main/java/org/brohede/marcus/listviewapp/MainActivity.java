@@ -6,6 +6,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -14,25 +15,7 @@ public class MainActivity extends AppCompatActivity {
     private int[] mountainHeights = {4478, 4808, 6190};
     // Create ArrayLists from the raw data above and use these lists when populating your ListView.
 
-    public class mountain {
 
-        private String name;
-        private String location;
-        private int height;
-
-        public mountain(String n, String l, int h){
-            name = n;
-            location = l;
-            height = h;
-        }
-
-        public String info(){
-            String tmp;
-            tmp = location + " " + height;
-
-            return tmp;
-        }
-    }
 
 
 
@@ -41,11 +24,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ArrayList<mountain> mountainArr = new ArrayList();
-        mountainArr.add(new mountain("Matterhorn", "Alps", 4478));
+        List<String> listData = new ArrayList<String>(Arrays.asList(mountainNames));
+/*
+        ArrayList<Mountain> mountainArr = new ArrayList();
+        mountainArr.add(new Mountain("Matterhorn", "Alps", 4478));
+*/
 
-
-        ArrayAdapter adapter = new ArrayAdapter(getApplicationContext(),R.layout.list_item_textview, R.id.my_listview, mountainArr);
+        ArrayAdapter adapter = new ArrayAdapter(getApplicationContext(),R.layout.list_item_textview,R.id.list_item_textview,listData);
 
         ListView myListView = (ListView)findViewById(R.id.my_listview);
         myListView.setAdapter(adapter);
